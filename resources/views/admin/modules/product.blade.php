@@ -13,7 +13,7 @@
             </button>
          </div>
          <div class="table-responsive ">
-            <table class="table">
+            <table class="table table-shopping">
                <thead>
                   <tr>
                      <th class="text-center">#</th>
@@ -30,10 +30,15 @@
                   @foreach($product as $key=>$item)
                   <tr>
                      <td class="text-center">{{++$key}}</td>
-                     <td id="name_{{$item->id}}">{{$item->title}}</td>
+                     <td>{{$item->name}}</td>
+                     <td>{{$item->catalog_id}}</td>
+                     <td class="currency">{{$item->price}}</td>
+                     <td>{{$item->discount}} %</td>
+                     <td><img class="img-container" src="./upload/product/{{$item->image_link}}"/></td>
+                     <td>{{$item->view}}</td>
                      <td class="td-actions text-right">
                         <button type="button" rel="tooltip" id="btnEdit" onclick="editModal({{$item}})" data-toggle="modal" data-target="#modalEdit" class="btn btn-success">
-                        <i class="material-icons"   >edit</i>
+                        <i class="material-icons">edit</i>
                         </button>
                         <button type="button" rel="tooltip" class="btn btn-danger" onclick="deleteModal({{$item->id}})">
                         <i class="material-icons"  data-toggle="modal" data-target="#modalDelete">close</i>
@@ -49,7 +54,7 @@
 </div>
 <!-- Modal Add-->
 <div id="modalAdd" class="modal fade" role="dialog">
-   <form action="product/add" method="POST">
+   <form action="product/add" method="POST" enctype="multipart/form-data">
       <div class="modal-dialog modal-lg">
          <div class="modal-content">
             <div class="modal-header">
@@ -61,11 +66,11 @@
                   <div class="col-md-6">
                      <div class="form-group">
                         <label>Tên Sản Phẩm</label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" name="name" class="form-control" required>
                      </div>
                      <div class="form-group">
                         <label>Giá (VNĐ)</label>
-                        <input type="number" name="price" class="form-control">
+                        <input type="number" name="price" class="form-control" required>
                      </div>
                   </div>
                   <div class="col-md-6">
@@ -86,12 +91,12 @@
                <div class="row">
                    <label for="file" class="btn btn-danger">Chọn ảnh...</label>
                    <div hidden>
-                        <input id="file" type="file" name="image"/>
+                        <input id="file" type="file" name="image"/ required>
                     </div>
                     <img id="imgAdd" />
                </div>
                <div class="row">
-                    <textarea name="text" id="editer1" class="form-control">                          
+                    <textarea name="content" id="editer1" class="form-control">                          
                         </textarea>
                </div>
             </div>
