@@ -54,7 +54,7 @@
 </div>
 <!-- Modal Add-->
 <div id="modalAdd" class="modal fade" role="dialog">
-   <form action="product/add" method="POST" enctype="multipart/form-data">
+   <form action="product/add" id="formAdd" method="POST" enctype="multipart/form-data">
       <div class="modal-dialog modal-lg">
          <div class="modal-content">
             <div class="modal-header">
@@ -70,7 +70,7 @@
                      </div>
                      <div class="form-group">
                         <label>Giá (VNĐ)</label>
-                        <input type="number" name="price" class="form-control" required>
+                        <input type="number" value="0" name="price" class="form-control" required>
                      </div>
                   </div>
                   <div class="col-md-6">
@@ -84,14 +84,14 @@
                      </div>
                      <div class="form-group">
                         <label>Giảm Giá (%)</label>
-                        <input type="number" name="discount" class="form-control">
+                        <input type="number" value="0" name="discount" class="form-control">
                      </div>
                   </div>
                </div>
                <div class="row">
-                   <label for="file" class="btn btn-danger">Chọn ảnh...</label>
+                   <label for="fileAdd" class="btn btn-danger">Chọn ảnh...</label>
                    <div hidden>
-                        <input id="file" type="file" name="image"/ required>
+                        <input id="fileAdd" type="file" name="image" required />
                     </div>
                     <img id="imgAdd" />
                </div>
@@ -101,7 +101,7 @@
                </div>
             </div>
             <div class="modal-footer">
-               <button type="submit" class="btn btn-success">Thêm</button>
+               <button type="button" class="btn btn-success" id="btnAdd">Thêm</button>
                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
          </div>
@@ -110,7 +110,7 @@
 </div>
 <!-- Modal Edit-->
 <div id="modalEdit" class="modal fade" role="dialog">
-   <form action="news/update" method="POST">
+   <form action="news/update" id="formEdit" method="POST">
       <div class="modal-dialog">
          <div class="modal-content">
             <div class="modal-header">
@@ -161,32 +161,47 @@
    </div>
 </div>
 <script>
-   function editModal(news){
-       console.log(news)
-       $('#idEdit').val(news.id);
-       $('#titleEdit').val(news.title);
-       CKEDITOR.instances['editer2'].setData(news.text)
-   }    
-   function deleteModal(id){              
-       $('#idDelete').val(id);
-   } 
-   $( document ).ready(function() {
-    CKEDITOR.replace( 'editer1' );
-    CKEDITOR.replace( 'editer2' );
-   });
-
-
-   function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result);
+$(document).ready(function() {
+    CKEDITOR.replace('editer1');
+    CKEDITOR.replace('editer2');
+    // validate form
+    var formAdd = $("#formAdd");
+    formAdd.validate();
+    var formEdit = $("#formEdit");
+    formEdit.validate();
+    $('#btnAdd').click(function(){
+        if (formAdd.valid()) {
+            var img = $('#imgAdd').attr('src');
+            if(img){
+                formAdd.submit();
+            }else{
+                alert('Bạn cần chọn ảnh cho sản phầm');
             }
-            reader.readAsDataURL(input.files[0]);
+        }else{
+            alert('Bạn cần điền đầy đủ thông tin');
         }
+    })    
+    $('#btnEdit').click(function(){
+        if (formEdit.valid()) {
+           
+        }else{
+            
+        }
+    })    
+    // end validate form
+   
+    function deleteModal(id) {
+        $('#idDelete').val(id);
     }
-    $("#file").change(function(){
-        readURL(this,'imgAdd');
+    $("#fileAdd").change(function() {
+        readURL(this, 'imgAdd');
     });
+});
+function editModal(product) {
+    console.log(product)
+    // $('#idEdit').val(news.id);
+    // $('#titleEdit').val(news.title);
+    // CKEDITOR.instances['editer2'].setData(news.text)
+}
 </script>
 @endsection
