@@ -19,24 +19,14 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 </head>
 
 <body>
-    <div class="wrapper">
-        @include('admin.layouts.sidebar');
-        <div class="main-panel">
-            @include('admin.layouts.nav')
-                <div class="content">
-                    <div class="container-fluid">
-                        @yield('content')
-                    </div>
-                </div>
-            @include('admin.layouts.footer')
-        </div>
-    </div>
+    @yield('content')    
 </body>
 <!--   Core JS Files   -->
-<script src="assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+
 <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="assets/js/material.min.js" type="text/javascript"></script>
 <script src="assets/js/perfect-scrollbar.jquery.min.js" type="text/javascript"></script>
@@ -78,5 +68,6 @@
 <script src="assets/js/material-dashboard.js?v=1.2.1"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="assets/js/demo.js"></script>
-
+<script src="assets/js/custome.js"></script>
+<script src="//cdn.ckeditor.com/4.9.0/standard/ckeditor.js"></script>
 </html>
