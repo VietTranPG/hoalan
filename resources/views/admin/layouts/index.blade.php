@@ -17,13 +17,14 @@
     <link href="assets/css/demo.css" rel="stylesheet" />
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"
+    />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="assets/js/jquery-3.2.1.min.js" type="text/javascript"></script>
 </head>
 
 <body>
-    @yield('content')    
+    @yield('content')
 </body>
 <!--   Core JS Files   -->
 
@@ -70,4 +71,5 @@
 <script src="assets/js/demo.js"></script>
 <script src="assets/js/custome.js"></script>
 <script src="//cdn.ckeditor.com/4.9.0/standard/ckeditor.js"></script>
+
 </html>
