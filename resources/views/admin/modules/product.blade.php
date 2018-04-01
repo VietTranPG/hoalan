@@ -27,11 +27,11 @@
                     </thead>
                     <tbody>
                         @foreach($product as $key=>$item)
-                        
+
                         <tr>
                             <td class="text-center">{{++$key}}</td>
                             <td>{{$item->name}}</td>
-                            <td>{{$item->name}}</td>
+                            <td>{{$item->category_name}}</td>
                             <td class="currency">{{$item->price}}</td>
                             <td>{{$item->discount}} %</td>
                             <td>
@@ -39,7 +39,7 @@
                             </td>
                             <td>{{$item->view}}</td>
                             <td class="td-actions text-right">
-                                <button type="button" rel="tooltip" id="btnEdit" onclick="editModal({{$item}})" data-toggle="modal" data-target="#modalEdit"
+                                <button type="button" rel="tooltip" id="btnEdit" onclick="editModal({{$item->id}})" data-toggle="modal" data-target="#modalEdit"
                                     class="btn btn-success">
                                     <i class="material-icons">edit</i>
                                 </button>
@@ -153,7 +153,7 @@
                     <div class="row">
                         <label for="fileEdit" class="btn btn-danger">Chọn ảnh...</label>
                         <div hidden>
-                            <input id="fileEdit" type="file" name="image"/>
+                            <input id="fileEdit" type="file" name="image" />
                         </div>
                         <img id="imgEdit" />
                     </div>

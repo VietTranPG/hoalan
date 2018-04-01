@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'CategoryController@getAll');
+Route::get('/','ClientController@Home');
+Route::get('/detail/{id}','ClientController@Detail');
 Route::group(['prefix'=>'category'],function(){    
     Route::get('/','CategoryController@getAll');
     Route::post('/add','CategoryController@add');
