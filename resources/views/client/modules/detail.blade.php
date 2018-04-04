@@ -22,7 +22,7 @@
 
                         <span class="price"> {{$product->price}}</span>
                         <p>
-                            <button type="button" class="btn  btn-success">Thêm vào giỏ hàng</button>
+                            <button type="button" class="btn btn-success cart">Thêm vào giỏ hàng</button>
                         </p>
                     </div>
                 </div>

@@ -13,6 +13,11 @@
 
 Route::get('/','ClientController@Home');
 Route::get('/detail/{id}','ClientController@Detail');
+Route::get('/search','ClientController@Search');
+Route::get('/cart','ClientController@GotoCart');
+Route::get('/addCart/{id}','ClientController@AddCart');
+Route::post('/register','UserController@Register');
+Route::post('/login','UserController@Login');
 Route::group(['prefix'=>'category'],function(){    
     Route::get('/','CategoryController@getAll');
     Route::post('/add','CategoryController@add');

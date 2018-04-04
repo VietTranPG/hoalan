@@ -20,6 +20,9 @@ class VerifyCsrfToken extends Middleware
         "news/delete",
         "product/add",
         "product/update",
-        "product/delete"
+        "product/delete",
+        "search",
+        "register",
+        "login"
     ];
 }
