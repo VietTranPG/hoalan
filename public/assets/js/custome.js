@@ -93,6 +93,7 @@ $(document).ready(function () {
         }
         return request;
     }
+    
 });
 
 function readURL(input, id) {

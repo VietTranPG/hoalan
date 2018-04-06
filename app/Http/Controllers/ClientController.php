@@ -96,4 +96,26 @@ class ClientController extends Controller
         $user = DB::table('users')->where('remember_token',$token)->first();
         return $user;
     }
+    public function GetCartDetail(Request $request){
+        $response =  new Response();    
+        $token = $request->header('token');
+        $user = $this->GetUserbyToken($token);
+        if(empty($user)){
+            $response->status=0;
+            $response->message="Bạn phải login";
+        }else{
+            $cart =  DB::table('transaction')
+            ->where('transaction.user_id',$user->id)
+            ->where('transaction.status',1)->first();
+            $oderDetal = DB::table('order-detail')
+            ->join('product','product.id','=','order-detail.product_id')
+            ->select('order-detail.*','product.image_link','product.price','product.discount','product.name')
+            ->where('transaction_id',$cart->id)->get();
+            $cart->details=$oderDetal;
+            $response->status=1;
+            $response->message="";
+            $response->data=$cart;
+        }
+       return json_encode($response);
+    }
 }

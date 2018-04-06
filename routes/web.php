@@ -15,6 +15,7 @@ Route::get('/','ClientController@Home');
 Route::get('/detail/{id}','ClientController@Detail');
 Route::get('/search','ClientController@Search');
 Route::get('/cart','ClientController@GotoCart');
+Route::get('/cart-detail','ClientController@GetCartDetail');
 Route::get('/addCart/{id}','ClientController@AddCart');
 Route::post('/register','UserController@Register');
 Route::post('/login','UserController@Login');
