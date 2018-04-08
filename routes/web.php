@@ -16,7 +16,8 @@ Route::get('/detail/{id}','ClientController@Detail');
 Route::get('/search','ClientController@Search');
 Route::get('/cart','ClientController@GotoCart');
 Route::get('/cart-detail','ClientController@GetCartDetail');
-Route::get('/addCart/{id}','ClientController@AddCart');
+Route::post('/addcart','ClientController@AddCart');
+Route::get('/test','ClientController@sendMail');
 Route::post('/register','UserController@Register');
 Route::post('/login','UserController@Login');
 Route::group(['prefix'=>'category'],function(){    
@@ -36,6 +37,11 @@ Route::group(['prefix'=>'product'],function(){
     Route::post('/add','ProductController@add');
     Route::post('/update','ProductController@update');
     Route::post('/delete','ProductController@delete');
+});
+Route::group(['prefix'=>'transaction'],function(){    
+    Route::get('/','TransactionController@GetTransaction');
+    Route::post('/update-status','TransactionController@UpdateStatus');
+    Route::post('/delete','TransactionController@delete');
 });
 Route::get('/login', function () {
     return view('admin.modules.login');

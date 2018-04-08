@@ -5,13 +5,35 @@ $(document).ready(function () {
         $('#' + currentPage).addClass('active');
     }
     $('.cart').click(function () {
-        if (localStorage.getItem('user')) {
-            var user = JSON.parse(localStorage.getItem('user'));
-            addToCart(this.id, user.remember_token);
-        } else {
-            $('#modalLogin').modal('show');
+        var cart = localStorage.getItem('cart');
+        var pId = this.id;
+        var obj = {
+            id: pId,
+            name: this.name,
+            img: $(this).attr('img'),
+            price: $(this).attr('price'),
+            discount: $(this).attr('discount'),
+            category: $(this).attr('category'),
+            qty: 1
         }
+        if (cart) {
+            cart = JSON.parse(cart);
+            var index = cart.findIndex(x => x.id == pId);
+            if (index > -1) {
+                cart[index].qty++;
+            } else {
+                cart.push(obj);
+            }
+        } else {
+            cart = [];
+            cart.push(obj);
+        }
+        demo.showNotification('top', 'center', 'Sản phẩm đã thêm vào giỏ');
+        localStorage.setItem('cart', JSON.stringify(cart));
+        setNumberCart();
     })
+
+    setNumberCart();
     $('#openLogin').click(function () {
         openLogin();
     })
@@ -45,15 +67,9 @@ $(document).ready(function () {
     function login() {
         var data = $('#formLogin').serializeArray();
         var request = handleArrForm(data);
-
-    }
-
-    function register() {
-        var data = $('#formRegister').serializeArray();
-        var request = handleArrForm(data);
         $.ajax({
             type: "POST",
-            url: '/register',
+            url: '/login',
             data: data,
             dataType: 'json',
             success: function (res) {
@@ -68,18 +84,21 @@ $(document).ready(function () {
         });
     }
 
-    function addToCart(id, token) {
+    function register() {
+        var data = $('#formRegister').serializeArray();
+        var request = handleArrForm(data);
         $.ajax({
-            type: "GET",
-            url: '/addCart/' + id,
-            headers: {
-                "token": token,
-            },
+            type: "POST",
+            url: '/register',
+            data: data,
+         
             dataType: 'json',
             success: function (res) {
                 if (res.status == 1) {
-                    demo.showNotification('top', 'center', 'Sản phẩm đã thêm vào giỏ')
+                    localStorage.setItem('user', JSON.stringify(res.data));
+                    $('#modalLogin').modal('hide');
                 } else {
+                    console.log(res)
                     alert(res.message);
                 }
             }
@@ -93,7 +112,7 @@ $(document).ready(function () {
         }
         return request;
     }
-    
+
 });
 
 function readURL(input, id) {
@@ -104,5 +123,19 @@ function readURL(input, id) {
             $('#' + id).attr('src', e.target.result);
         }
         reader.readAsDataURL(input.files[0]);
+    }
+}
+
+function setNumberCart() {
+    var cart = localStorage.getItem('cart');
+    var number = 0;
+    if (cart) {
+        cart = JSON.parse(cart);
+        for (var i = 0; i < cart.length; i++) {
+            number += cart[i].qty;
+        }
+        $('.notification').html(number);
+    } else {
+        $('.notification').html('0');
     }
 }

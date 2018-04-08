@@ -21,6 +21,7 @@
     />
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="{{asset('assets/js/jquery-3.2.1.min.js') }}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/custome.js') }}"></script>
 </head>
 
 <body>
@@ -69,7 +70,7 @@
 <script src="{{asset('assets/js/material-dashboard.js?v=1.2.1') }}"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('assets/js/demo.js') }}"></script>
-<script src="{{asset('assets/js/custome.js') }}"></script>
+
 <script src="//cdn.ckeditor.com/4.9.0/standard/ckeditor.js"></script>
 
 </html>

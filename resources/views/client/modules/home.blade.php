@@ -10,7 +10,8 @@
                     {{$item->category_name}}
                 </p>
             </div>
-        <a class="btn btn-rose btn-round cart" id="{{$item->id}}">Thêm vào giỏ</a>
+            <a class="btn btn-rose btn-round cart" id="{{$item->id}}" name="{{$item->name}}" img="{{$item->image_link}}" price="{{$item->price}}"
+                discount="{{$item->discount}}" category="{{$item->category_name}}">Thêm vào giỏ</a>
         </div>
     </div>
 </div>

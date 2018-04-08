@@ -49,6 +49,16 @@ class UserController extends Controller
         return json_encode($response);    
     }
     public function Login(Request $request){
-        
+        $response =  new Response();
+        $userExits = DB::table('users')->select('email','password','remember_token')->where('email',$request->email)->first();
+        if(empty($userExits)){
+            $response->status = 0;
+            $response->message = "Email đã tồn tại";
+        }else{
+            $response->data = $userExits;
+            $response->status = 1;
+            $response->message = 'success';
+        }
+        return json_encode($response);    
     }
 }

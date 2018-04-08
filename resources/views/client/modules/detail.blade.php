@@ -22,7 +22,8 @@
 
                         <span class="price"> {{$product->price}}</span>
                         <p>
-                            <button type="button" class="btn btn-success cart">Thêm vào giỏ hàng</button>
+                            <a class="btn btn-rose btn-round cart" id="{{$product->id}}" name="{{$product->name}}" img="{{$product->image_link}}" price="{{$product->price}}"
+                                discount="{{$product->discount}}" category="{{$product->category_name}}">Thêm vào giỏ</a>
                         </p>
                     </div>
                 </div>
