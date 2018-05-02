@@ -36,6 +36,7 @@ class TransactionController extends Controller
             $response->status=1;
             $response->message="";
         }
-      return json_encode($response,true);
+    //   return json_encode($response,true);
+      return view('admin.modules.transaction',['transaction'=> $transaction]); 
     }
 }
