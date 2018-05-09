@@ -10,18 +10,15 @@ use Illuminate\Http\Request;
 class TransactionController extends Controller
 {
     public function GetTransaction(){
-        $response =  new Response();
+      
         $arr = array();
         $transaction = DB::table('transaction')
         ->get();
         $order_details = DB::table('order-detail')
         ->join('product','order-detail.product_id','=','product.id')
-        ->select('order-detail.*','product.price','product.discount')
-        ->get();
-     
-        if(empty($transaction)){    
-            $response->status=0;
-            $response->message="Chưa có đơn hàng nào";
+        ->select('order-detail.*','product.name as product_name','product.price','product.discount','product.image_link')
+        ->get();     
+        if(empty($transaction)){              
         }else{
             for ($index=0;$index<count($transaction);$index++) {
                 $transaction[$index]->product = array();
@@ -32,10 +29,8 @@ class TransactionController extends Controller
                 }
               
             }
-            $response->data = $transaction;
-            $response->status=1;
-            $response->message="";
         }
-      return json_encode($response,true);
+        return view('admin.modules.transaction',['transaction'=>$transaction]); 
+     
     }
 }

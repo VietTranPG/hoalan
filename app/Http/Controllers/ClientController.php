@@ -87,6 +87,33 @@ class ClientController extends Controller
     public function sendMail(){
         Mail::send('mailToCustome', array('content'=>'Sendmail test'), function($message){
 	        $message->to('viet.tranhoang@powergatesoftware.com', 'Visitor')->subject('Visitor Feedback!');
-	    });
+        });
+        return 'ok';
     }
+    public function FixImage(Request $request){
+        $filename ="upload/product/aytpye15239898885.jpg";
+        $exif = exif_read_data($filename);
+        if(!empty( $exif["Orientation"])){
+            $ort = $exif["Orientation"];    
+            $source = imagecreatefromjpeg($filename);
+            if (!empty($ort)) {
+                switch ($ort) {
+                    case 3:
+                        $rotate  = imagerotate($source, -180, 0);
+                      
+                        break;
+                    case 6:
+                        $rotate  = imagerotate($source, -90, 0);
+                        break;
+                    case 8:
+                        $rotate  = imagerotate($source, 90, 0);
+                        break;
+                } 
+              
+                imagejpeg($rotate, $filename, 80);
+            }      
+        }
+        dd(1);
+    }
+    
 }

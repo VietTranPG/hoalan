@@ -24,6 +24,7 @@ class VerifyCsrfToken extends Middleware
         "search",
         "register",
         "login",
-        "addcart"
+        "addcart",
+        "test"
     ];
 }

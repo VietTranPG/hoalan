@@ -224,7 +224,7 @@
         if (cart) {
             var user = JSON.parse(localStorage.getItem('user'));
             var data = {
-                "phone": $('#address').val(),
+                "phone": $('#phone').val(),
                 "address": $('#address').val(),
                 "message": $('#message').val(),
                 "product": JSON.parse(cart)

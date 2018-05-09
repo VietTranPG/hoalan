@@ -1,6 +1,6 @@
 demo = {
-    initPickColor: function() {
-        $('.pick-class-label').click(function() {
+    initPickColor: function () {
+        $('.pick-class-label').click(function () {
             var new_class = $(this).attr('new-class');
             var old_class = $('#display-buttons').attr('data-class');
             var display_div = $('#display-buttons');
@@ -13,7 +13,7 @@ demo = {
         });
     },
 
-    checkFullPageBackgroundImage: function() {
+    checkFullPageBackgroundImage: function () {
         $page = $('.full-page');
         image_src = $page.data('image');
 
@@ -23,7 +23,7 @@ demo = {
         }
     },
 
-    initFormExtendedDatetimepickers: function() {
+    initFormExtendedDatetimepickers: function () {
         $('.datetimepicker').datetimepicker({
             icons: {
                 time: "fa fa-clock-o",
@@ -71,7 +71,7 @@ demo = {
         });
     },
 
-    initMaterialWizard: function() {
+    initMaterialWizard: function () {
         // Code for the Validator
         var $validator = $('.wizard-card form').validate({
             rules: {
@@ -89,7 +89,7 @@ demo = {
                 }
             },
 
-            errorPlacement: function(error, element) {
+            errorPlacement: function (error, element) {
                 $(element).parent('div').addClass('has-error');
             }
         });
@@ -100,7 +100,7 @@ demo = {
             'nextSelector': '.btn-next',
             'previousSelector': '.btn-previous',
 
-            onNext: function(tab, navigation, index) {
+            onNext: function (tab, navigation, index) {
                 var $valid = $('.wizard-card form').valid();
                 if (!$valid) {
                     $validator.focusInvalid();
@@ -108,7 +108,7 @@ demo = {
                 }
             },
 
-            onInit: function(tab, navigation, index) {
+            onInit: function (tab, navigation, index) {
                 //check number of tabs and fill the entire row
                 var $total = navigation.find('li').length;
                 var $wizard = navigation.closest('.wizard-card');
@@ -122,7 +122,7 @@ demo = {
                 $('.moving-tab').css('transition', 'transform 0s');
             },
 
-            onTabClick: function(tab, navigation, index) {
+            onTabClick: function (tab, navigation, index) {
                 var $valid = $('.wizard-card form').valid();
 
                 if (!$valid) {
@@ -132,7 +132,7 @@ demo = {
                 }
             },
 
-            onTabShow: function(tab, navigation, index) {
+            onTabShow: function (tab, navigation, index) {
                 var $total = navigation.find('li').length;
                 var $current = index + 1;
 
@@ -149,7 +149,7 @@ demo = {
 
                 button_text = navigation.find('li:nth-child(' + $current + ') a').html();
 
-                setTimeout(function() {
+                setTimeout(function () {
                     $('.moving-tab').text(button_text);
                 }, 150);
 
@@ -174,11 +174,11 @@ demo = {
 
 
         // Prepare the preview for profile picture
-        $("#wizard-picture").change(function() {
+        $("#wizard-picture").change(function () {
             readURL(this);
         });
 
-        $('[data-toggle="wizard-radio"]').click(function() {
+        $('[data-toggle="wizard-radio"]').click(function () {
             wizard = $(this).closest('.wizard-card');
             wizard.find('[data-toggle="wizard-radio"]').removeClass('active');
             $(this).addClass('active');
@@ -186,7 +186,7 @@ demo = {
             $(this).find('[type="radio"]').attr('checked', 'true');
         });
 
-        $('[data-toggle="wizard-checkbox"]').click(function() {
+        $('[data-toggle="wizard-checkbox"]').click(function () {
             if ($(this).hasClass('active')) {
                 $(this).removeClass('active');
                 $(this).find('[type="checkbox"]').removeAttr('checked');
@@ -204,15 +204,15 @@ demo = {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 
-                reader.onload = function(e) {
+                reader.onload = function (e) {
                     $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
                 }
                 reader.readAsDataURL(input.files[0]);
             }
         }
 
-        $(window).resize(function() {
-            $('.wizard-card').each(function() {
+        $(window).resize(function () {
+            $('.wizard-card').each(function () {
                 $wizard = $(this);
 
                 index = $wizard.bootstrapWizard('currentIndex');
@@ -269,7 +269,7 @@ demo = {
     },
 
 
-    initDocumentationCharts: function() {
+    initDocumentationCharts: function () {
         if ($('#dailySalesChart').length != 0 && $('#websiteViewsChart').length != 0) {
             /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
@@ -300,7 +300,7 @@ demo = {
         }
     },
 
-    initCharts: function() {
+    initCharts: function () {
         if ($('#roundedLineChart').length != 0 && $('#straightLinesChart').length != 0 && $('#colouredRoundedLineChart').length != 0 && $('#colouredBarsChart').length != 0 && $('#simpleBarChart').length != 0 && $('#multipleBarsChart').length != 0) {
             /* ----------==========    Rounded Line Chart initialization    ==========---------- */
 
@@ -468,7 +468,7 @@ demo = {
                 ['screen and (max-width: 640px)', {
                     seriesBarDistance: 5,
                     axisX: {
-                        labelInterpolationFnc: function(value) {
+                        labelInterpolationFnc: function (value) {
                             return value[0];
                         }
                     }
@@ -501,7 +501,7 @@ demo = {
                 ['screen and (max-width: 640px)', {
                     seriesBarDistance: 5,
                     axisX: {
-                        labelInterpolationFnc: function(value) {
+                        labelInterpolationFnc: function (value) {
                             return value[0];
                         }
                     }
@@ -516,7 +516,7 @@ demo = {
 
     },
 
-    initDashboardPageCharts: function() {
+    initDashboardPageCharts: function () {
         if ($('#dailySalesChart').length != 0 && $('#completedTasksChart').length != 0 && $('#websiteViewsChart').length != 0) {
             /* ----------==========     Daily Sales Chart initialization    ==========---------- */
 
@@ -602,7 +602,7 @@ demo = {
                 ['screen and (max-width: 640px)', {
                     seriesBarDistance: 5,
                     axisX: {
-                        labelInterpolationFnc: function(value) {
+                        labelInterpolationFnc: function (value) {
                             return value[0];
                         }
                     }
@@ -615,124 +615,18 @@ demo = {
         }
     },
 
-    showSwal: function(type) {
-        if (type == 'basic') {
-            swal({
-                title: "Here's a message!",
-                buttonsStyling: false,
-                confirmButtonClass: "btn btn-success"
-            }).catch(swal.noop)
-
-        } else if (type == 'title-and-text') {
-            swal({
-                title: "Here's a message!",
-                text: "It's pretty, isn't it?",
-                buttonsStyling: false,
-                confirmButtonClass: "btn btn-info"
-            }).catch(swal.noop)
-
-        } else if (type == 'success-message') {
-            swal({
-                title: "Good job!",
-                text: "You clicked the button!",
-                buttonsStyling: false,
-                confirmButtonClass: "btn btn-success",
-                type: "success"
-            }).catch(swal.noop)
-
-        } else if (type == 'warning-message-and-confirmation') {
-            swal({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                confirmButtonText: 'Yes, delete it!',
-                buttonsStyling: false
-            }).then(function() {
-                swal({
-                    title: 'Deleted!',
-                    text: 'Your file has been deleted.',
-                    type: 'success',
-                    confirmButtonClass: "btn btn-success",
-                    buttonsStyling: false
-                })
-            }).catch(swal.noop)
-        } else if (type == 'warning-message-and-cancel') {
-            swal({
-                title: 'Are you sure?',
-                text: 'You will not be able to recover this imaginary file!',
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, keep it',
-                confirmButtonClass: "btn btn-success",
-                cancelButtonClass: "btn btn-danger",
-                buttonsStyling: false
-            }).then(function() {
-                swal({
-                    title: 'Deleted!',
-                    text: 'Your imaginary file has been deleted.',
-                    type: 'success',
-                    confirmButtonClass: "btn btn-success",
-                    buttonsStyling: false
-                }).catch(swal.noop)
-            }, function(dismiss) {
-                // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
-                if (dismiss === 'cancel') {
-                    swal({
-                        title: 'Cancelled',
-                        text: 'Your imaginary file is safe :)',
-                        type: 'error',
-                        confirmButtonClass: "btn btn-info",
-                        buttonsStyling: false
-                    }).catch(swal.noop)
-                }
-            })
-
-        } else if (type == 'custom-html') {
-            swal({
-                title: 'HTML example',
-                buttonsStyling: false,
-                confirmButtonClass: "btn btn-success",
-                html: 'You can use <b>bold text</b>, ' +
-                    '<a href="http://github.com">links</a> ' +
-                    'and other HTML tags'
-            }).catch(swal.noop)
-
-        } else if (type == 'auto-close') {
-            swal({
-                title: "Auto close alert!",
-                text: "I will close in 2 seconds.",
-                timer: 2000,
-                showConfirmButton: false
-            }).catch(swal.noop)
-        } else if (type == 'input-field') {
-            swal({
-                title: 'Input something',
-                html: '<div class="form-group">' +
-                    '<input id="input-field" type="text" class="form-control" />' +
-                    '</div>',
-                showCancelButton: true,
-                confirmButtonClass: 'btn btn-success',
-                cancelButtonClass: 'btn btn-danger',
-                buttonsStyling: false
-            }).then(function(result) {
-                swal({
-                    type: 'success',
-                    html: 'You entered: <strong>' +
-                        $('#input-field').val() +
-                        '</strong>',
-                    confirmButtonClass: 'btn btn-success',
-                    buttonsStyling: false
-
-                })
-            }).catch(swal.noop)
-        }
+    showSwal: function () {
+        swal({
+            title: 'HTML example',
+            buttonsStyling: false,
+            confirmButtonClass: "btn btn-success",
+            html: 'You can use <b>bold text</b>, ' +
+                '<a href="http://github.com">links</a> ' +
+                'and other HTML tags'
+        }).catch(swal.noop)
     },
 
-    initVectorMap: function() {
+    initVectorMap: function () {
         var mapData = {
             "AU": 760,
             "BR": 550,
@@ -771,7 +665,7 @@ demo = {
         });
     },
 
-    initGoogleMaps: function() {
+    initGoogleMaps: function () {
         var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
         var mapOptions = {
             zoom: 13,
@@ -875,7 +769,7 @@ demo = {
         marker.setMap(map);
     },
 
-    initSmallGoogleMaps: function() {
+    initSmallGoogleMaps: function () {
 
         // Regular Map
         var myLatlng = new google.maps.LatLng(40.748817, -73.985428);
@@ -1023,7 +917,7 @@ demo = {
 
     },
 
-    initFullCalendar: function() {
+    initFullCalendar: function () {
         $calendar = $('#fullCalendar');
 
         today = new Date();
@@ -1032,7 +926,7 @@ demo = {
         d = today.getDate();
 
         $calendar.fullCalendar({
-            viewRender: function(view, element) {
+            viewRender: function (view, element) {
                 // We make sure that we activate the perfect scrollbar when the view isn't on Month
                 if (view.name != 'month') {
                     $(element).find('.fc-scroller').perfectScrollbar();
@@ -1059,7 +953,7 @@ demo = {
                 }
             },
 
-            select: function(start, end) {
+            select: function (start, end) {
 
                 // on select we show the Sweet Alert modal with an input
                 swal({
@@ -1071,7 +965,7 @@ demo = {
                     confirmButtonClass: 'btn btn-success',
                     cancelButtonClass: 'btn btn-danger',
                     buttonsStyling: false
-                }).then(function(result) {
+                }).then(function (result) {
 
                     var eventData;
                     event_title = $('#input-field').val();
@@ -1157,7 +1051,7 @@ demo = {
         });
     },
 
-    showNotification: function(from, align,message) {
+    showNotification: function (from, align, message) {
         type = ['', 'info', 'success', 'warning', 'danger', 'rose', 'primary'];
 
         color = Math.floor((Math.random() * 6) + 1);

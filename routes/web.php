@@ -17,7 +17,7 @@ Route::get('/search','ClientController@Search');
 Route::get('/cart','ClientController@GotoCart');
 Route::get('/cart-detail','ClientController@GetCartDetail');
 Route::post('/addcart','ClientController@AddCart');
-Route::get('/test','ClientController@sendMail');
+Route::post('/test','ClientController@FixImage');
 Route::post('/register','UserController@Register');
 Route::post('/login','UserController@Login');
 Route::group(['prefix'=>'category'],function(){    

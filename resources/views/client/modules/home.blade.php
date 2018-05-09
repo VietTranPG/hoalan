@@ -21,4 +21,21 @@
         window.location.href = '/detail/' + id;
     }
 </script>
+<img src="upload/product/aytpye15239898885.jpg" alt="Smiley face" height="500" width="500">
+<form class="form-horizontal" action="test" method="post" enctype="multipart/form-data">
+<div class="form-group">
+    <div class="col-md-9">
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    Choose img
+                    <input type="file" name="image" id="imgInp">
+                </span>
+            </span>
+
+        </div>
+    </div>
+</div>
+<button type="submit">Send</button>
+</form>
 @endsection
